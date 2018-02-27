@@ -14,4 +14,12 @@ public class ZombieCtrl : MonoBehaviour {
 	void Update () {
 		transform.position = Vector2.MoveTowards (new Vector2 (transform.position.x, transform.position.y), Vector2.zero, zombieSpeed * Time.deltaTime);
 	}
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Bullet")){
+            Destroy(col.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
