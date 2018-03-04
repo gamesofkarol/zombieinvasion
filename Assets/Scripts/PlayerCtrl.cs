@@ -4,19 +4,41 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour {
 
+    public static PlayerCtrl instance;
+
     public GameObject basicBullet;
     public Transform barrel;
     public float fireDelay;
+    public int lives;
+    [HideInInspector]
+    public int startLives;
+
     private Vector3 mousePos;
     private float lastShot;
-    
+   
 
-	void Start () {
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    void Start () {
         lastShot = 0;
+        startLives = lives;
 	}
 	
 
 	void Update () {
+
+        if(GameManager.instance.gameState == GameState.PAUSE)
+        {
+            return;
+        }
+
         HandleAim();
         if (Input.GetMouseButton(0))
         {

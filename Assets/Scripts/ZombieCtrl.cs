@@ -17,8 +17,16 @@ public class ZombieCtrl : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Bullet")){
+        if (col.CompareTag("Bullet"))
+        {
             Destroy(col.gameObject);
+            Destroy(gameObject);
+        }
+
+        if (col.CompareTag("Player"))
+        {
+            PlayerCtrl.instance.lives--;
+            Debug.Log(PlayerCtrl.instance.lives);
             Destroy(gameObject);
         }
     }
