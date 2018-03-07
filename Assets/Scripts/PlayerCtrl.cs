@@ -12,6 +12,8 @@ public class PlayerCtrl : MonoBehaviour {
     public int lives;
     [HideInInspector]
     public int startLives;
+    [HideInInspector]
+    public int kills;
 
     private Vector3 mousePos;
     private float lastShot;
@@ -28,6 +30,7 @@ public class PlayerCtrl : MonoBehaviour {
 
     void Start () {
         lastShot = 0;
+        kills = 0;
         startLives = lives;
 	}
 	

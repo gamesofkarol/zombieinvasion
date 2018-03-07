@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Zombie");
         foreach(GameObject obj in objects)
@@ -76,5 +76,7 @@ public class GameManager : MonoBehaviour {
 
         PlayerCtrl.instance.transform.rotation = Quaternion.Euler(0, 0, 90);
         PlayerCtrl.instance.lives = PlayerCtrl.instance.startLives;
+        PlayerCtrl.instance.transform.rotation = Quaternion.Euler(0, 0, 90);
+        PlayerCtrl.instance.kills = 0;
     }
 }

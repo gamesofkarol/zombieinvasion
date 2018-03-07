@@ -19,6 +19,7 @@ public class ZombieCtrl : MonoBehaviour {
     {
         if (col.CompareTag("Bullet"))
         {
+            PlayerCtrl.instance.kills++;
             Destroy(col.gameObject);
             Destroy(gameObject);
         }
