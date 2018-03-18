@@ -55,9 +55,10 @@ public class GameManager : MonoBehaviour {
     {
         if(gameState == GameState.GAME && PlayerCtrl.instance.lives <= 0)
         {
+            SaveRecord();
             RestartGame();
             PauseGame();
-        }
+        }   
     }
 
     public void RestartGame()
@@ -78,5 +79,14 @@ public class GameManager : MonoBehaviour {
         PlayerCtrl.instance.lives = PlayerCtrl.instance.startLives;
         PlayerCtrl.instance.transform.rotation = Quaternion.Euler(0, 0, 90);
         PlayerCtrl.instance.kills = 0;
+    }
+
+    public void SaveRecord()
+    {
+        if(PlayerCtrl.instance.kills > GameDataCtrl.instance.gameData.killRecord)
+        {
+            GameDataCtrl.instance.gameData.killRecord = PlayerCtrl.instance.kills;
+            GameDataCtrl.instance.SaveData();
+        }
     }
 }

@@ -7,6 +7,7 @@ public class GUICtrl : MonoBehaviour {
 
     public Text livesTxt;
     public Text killsTxt;
+    public Text killsRecordTxt;
     public GameObject pauseGUI;
 
     // Use this for initialization
@@ -18,8 +19,9 @@ public class GUICtrl : MonoBehaviour {
 	void Update () {
         livesTxt.text = "Lives: " + PlayerCtrl.instance.lives;
         killsTxt.text = "Kills: " + PlayerCtrl.instance.kills;
+        killsRecordTxt.text = "Kills record: " + GameDataCtrl.instance.gameData.killRecord;
 
-        if(GameManager.instance.gameState == GameState.PAUSE)
+        if (GameManager.instance.gameState == GameState.PAUSE)
         {
             pauseGUI.SetActive(true);
         }else if (GameManager.instance.gameState == GameState.GAME)
