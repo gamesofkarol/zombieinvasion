@@ -17,6 +17,7 @@ public class PlayerCtrl : MonoBehaviour {
 
     private Vector3 mousePos;
     private float lastShot;
+    private Animator animator;
    
 
 
@@ -32,6 +33,7 @@ public class PlayerCtrl : MonoBehaviour {
         lastShot = 0;
         kills = 0;
         startLives = lives;
+        animator = GetComponent<Animator>();
 	}
 	
 
@@ -47,6 +49,10 @@ public class PlayerCtrl : MonoBehaviour {
         {
             Fire();
         }
+        else
+        {
+            StopFire();
+        }
 
     }
 
@@ -60,11 +66,24 @@ public class PlayerCtrl : MonoBehaviour {
 
     private void Fire()
     {
+        if (!animator.GetBool("isShooting"))
+        {
+            animator.SetBool("isShooting", true);
+        }
+
         if(lastShot + fireDelay < Time.time)
         {
             Instantiate(basicBullet, barrel.position, transform.rotation);
             lastShot = Time.time;
         }
        
+    }
+
+    private void StopFire()
+    {
+        if (animator.GetBool("isShooting"))
+        {
+            animator.SetBool("isShooting", false);
+        }
     }
 }
