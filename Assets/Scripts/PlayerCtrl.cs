@@ -73,6 +73,7 @@ public class PlayerCtrl : MonoBehaviour {
 
         if(lastShot + fireDelay < Time.time)
         {
+            AudioCtrl.instance.PlayerShoot();
             Instantiate(basicBullet, barrel.position, transform.rotation);
             lastShot = Time.time;
         }

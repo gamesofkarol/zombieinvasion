@@ -27,7 +27,6 @@ public class ZombieCtrl : MonoBehaviour {
         if (col.CompareTag("Player"))
         {
             PlayerCtrl.instance.lives--;
-            Debug.Log(PlayerCtrl.instance.lives);
             Destroy(gameObject);
         }
     }
