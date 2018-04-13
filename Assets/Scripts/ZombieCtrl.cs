@@ -21,6 +21,7 @@ public class ZombieCtrl : MonoBehaviour {
         {
             PlayerCtrl.instance.kills++;
             Destroy(col.gameObject);
+            SFXCtrl.instance.CreateBloodEffect(transform.position);
             Destroy(gameObject);
         }
 
