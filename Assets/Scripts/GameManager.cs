@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour {
         PlayerCtrl.instance.kills = 0;
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void SaveRecord()
     {
         if(PlayerCtrl.instance.kills > GameDataCtrl.instance.gameData.killRecord)
